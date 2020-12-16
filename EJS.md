@@ -1,7 +1,12 @@
 # Templating with EJS
 
+The whole point of using a Templating language or Templating Engine like EJS, is to be able to add logic and interpolate data.
+Basically, to help fill out a scaffolding or blueprint.
+
 EJS:
-Embedded JavaScript templating.
+Embedded JavaScript templating. This is essentially "souped up" HTML.
+
+[view EJS documentation](https://ejs.co/#docs)
 
 This is used to make dynamic templates with JavaScript.
 
@@ -58,3 +63,35 @@ res.render('user', { name: 'Tobi' }, function (err, html) {
   // ...
 })
 ```
+
+
+### Using the Path module to tie path segments together
+
+Problem: Can't work from different directories, since the "views" directory is set up to be "process.cwd()" (current working directory).
+
+So, to fix this we would have to append views to where the file is located, index.js. Making views in that directory.
+
+- path.join() takes multiple path segments and joins them together, and normalizes it into a single path.
+
+
+</br>
+
+## EJS Tags
+
+| **TAG** |            **DESCRIPTION**                                             |
+| ------- | ---------------------------------------------------------------------- |
+| <%      |  'Scriptlet' tag, for control-flow, no output                          |
+| <%_     |   ‘Whitespace Slurping’ Scriptlet tag, strips all whitespace before it |
+| <%=     | Outputs the value into the template (HTML escaped)                     |
+| <%-     |   Outputs the unescaped value into the template                        |
+| <%#     |   Comment tag, no execution, no output                                 |
+| <%%     |   Outputs a literal '<%'                                               |
+| %>      |  Plain ending tag                                                      |
+| -%>     |   Trim-mode ('newline slurp') tag, trims following newline             |
+| _%>     |   ‘Whitespace Slurping’ ending tag, removes all whitespace after it    |
+
+F|  or example:
+```
+<%=`Everything placed in here is treated as javascript`%>
+```
+
